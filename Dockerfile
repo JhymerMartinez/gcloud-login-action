@@ -1,4 +1,4 @@
-FROM gcr.io/cloud-builders/gcloud-slim as runtime
+FROM gcr.io/cloud-builders/gcloud-slim:ubuntu1804 as runtime
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
