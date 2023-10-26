@@ -15,18 +15,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Login to gcloud registry
       id: gcloud
-      uses: elgohr/gcloud-login-action@master
+      uses: elgohr/gcloud-login-action@v2
       with:
         account_key: ${{ secrets.GCLOUD_KEY }}
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: myDocker/repository
-        username: ${{ steps.gcloud.outputs.username }}
-        password: ${{ steps.gcloud.outputs.password }}
+        username: ${{ env.username }}
+        password: ${{ env.password }}
         registry: gcr.io, us.gcr.io, eu.gcr.io or asia.gcr.io
 ```
 
